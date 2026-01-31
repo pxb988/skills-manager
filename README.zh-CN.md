@@ -24,15 +24,15 @@ Skills Manager 预配置了 37+ 流行 AI 编码助手的目录映射。脚本�
 **已验证的助手**（经过测试确认可用）：
 - Claude Code (`~/.claude/skills/`)
 - Codex (`~/.codex/skills/`)
-- Cursor (`~/.cursor/skills/`)
 - Gemini CLI (`~/.gemini/skills/`)
 - Kiro (`~/.kiro/skills/`)
 - Trae (`~/.trae/skills/`)
-- Windsurf (`~/.codeium/windsurf/skills/`)
 - OpenCode (`~/.config/opencode/skills/`)
 - Antigravity (`~/.gemini/antigravity/global_skills`)
 
 **预配置支持**（已包含映射，待验证）：
+- Cursor (`~/.cursor/skills/`)
+- Windsurf (`~/.codeium/windsurf/skills/`)
 - Cline, CodeBuddy, CommandCode, Continue, Crush, Droid, Goose, Junie, Kilo, Kode
 - MCPJam, Mux, OpenHands, Pi, Qoder, Qwen Code, Roo, Trae CN
 - Zencoder, OpenClaude, Neovate, Pochi, Amp, Kimi CLI

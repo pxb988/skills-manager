@@ -24,15 +24,15 @@ Skills Manager comes pre-configured with directory mappings for 37+ popular AI c
 **Verified Assistants** (tested and confirmed working):
 - Claude Code (`~/.claude/skills/`)
 - Codex (`~/.codex/skills/`)
-- Cursor (`~/.cursor/skills/`)
 - Gemini CLI (`~/.gemini/skills/`)
 - Kiro (`~/.kiro/skills/`)
 - Trae (`~/.trae/skills/`)
-- Windsurf (`~/.codeium/windsurf/skills/`)
 - OpenCode (`~/.config/opencode/skills/`)
 - Antigravity (`~/.gemini/antigravity/global_skills`)
 
 **Pre-configured Support** (mappings included, awaiting verification):
+- Cursor (`~/.cursor/skills/`)
+- Windsurf (`~/.codeium/windsurf/skills/`)
 - Cline, CodeBuddy, CommandCode, Continue, Crush, Droid, Goose, Junie, Kilo, Kode
 - MCPJam, Mux, OpenHands, Pi, Qoder, Qwen Code, Roo, Trae CN
 - Zencoder, OpenClaude, Neovate, Pochi, Amp, Kimi CLI
