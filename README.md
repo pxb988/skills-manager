@@ -52,7 +52,74 @@ export PATH="$PATH:$(pwd)/scripts"
 
 ## 使用方式
 
-### 基本语法
+### 自然语言调用（推荐）
+
+**Skills Manager 是一个 Claude Code Skill**，你可以直接用自然语言与 Claude Code 对话来使用它！
+
+首先确保已安装此 skill 到 Claude Code：
+
+```bash
+# 方法一：直接从 GitHub 安装
+npx skills add pxb988/skills-manager
+
+# 方法二：从本地安装
+npx skills add F:\Github\skills-manager
+```
+
+安装后，你可以直接用自然语言与 Claude Code 对话：
+
+#### 基本用法示例
+
+```
+你: "帮我添加 xyz-dl 这个技能"
+
+你: "从 GitHub 添加 anthropics/skills 这个仓库"
+
+你: "把本地的 ./my-skill 添加到 .agents 系统"
+
+你: "添加技能 owner/repo，但只安装到 Cursor"
+```
+
+#### 高级用法示例
+
+```
+你: "添加这个技能，但先预览一下会发生什么"
+# Claude 会自动使用 --dry-run 模式
+
+你: "强制重新安装 owner/repo 这个技能"
+# Claude 会自动使用 --force 标志
+
+你: "我有私有仓库 my-org/private-skill，帮我添加，token 是 ghp_xxx"
+# Claude 会自动使用 --github-token
+
+你: "列出所有已安装的技能"
+
+你: "描述一下 xyz-dl 这个技能是做什么的"
+```
+
+#### Claude Code 如何理解你的请求
+
+Claude Code 会解析你的自然语言请求，自动转换为对应的命令：
+
+| 你的自然语言 | 自动执行的命令 |
+|-------------|---------------|
+| "添加技能 xyz-dl" | `add-skill.sh xyz-dl` |
+| "只安装到 Cursor" | `add-skill.sh xyz-dl --agent cursor` |
+| "先预览一下" | `add-skill.sh xyz-dl --dry-run` |
+| "强制覆盖" | `add-skill.sh xyz-dl --force` |
+| "私有仓库，token 是 xxx" | `add-skill.sh repo --github-token xxx` |
+
+#### 支持的自然语言模式
+
+- **添加技能**："添加"、"安装"、"从 GitHub 添加"、"把本地技能添加到"
+- **指定目标**："只安装到"、"仅针对"、"只要助手"
+- **预览模式**："预览"、"dry run"、"先看一下"
+- **强制操作**："强制"、"覆盖"、"重新安装"
+- **私有仓库**："私有"、"private"、"需要 token"
+
+### 命令行调用
+
+如果你想直接使用命令行脚本（不通过 Claude Code）：
 
 ```bash
 add-skill.sh [OPTIONS] <source>
