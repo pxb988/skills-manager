@@ -1,6 +1,6 @@
 # Skills Manager
 
-> A powerful skill management tool for sharing and managing skills across 37+ AI coding assistants.
+> A powerful skill management tool for sharing and managing skills across AI coding assistants.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Skills CLI](https://img.shields.io/badge/skills-cli-blue.svg)](https://www.npmjs.com/package/@anthropics/skills-cli)
@@ -17,15 +17,28 @@ Skills Manager is a comprehensive toolkit for managing skills for AI coding assi
 - **Dual Interaction Modes**: Supports natural language interaction (via Claude Code) and command-line script execution.
 - **Flexible Configuration**: Supports local paths, GitHub repositories, Git URLs, and private repository access.
 
-## Supported AI Assistants (37+)
+## Supported AI Assistants
 
-- Claude Code, Codex, Cursor, Gemini CLI, Kiro, Trae
-- Windsurf, Cline, CodeBuddy, CommandCode, Continue
-- Crush, Droid, Goose, Junie, Kilo, Kode
-- MCPJam, Mux, OpenCode, OpenHands, Pi, Qoder
-- Qwen Code, Roo, Trae CN, Zencoder, OpenClaude
-- Neovate, Pochi, Amp, Antigravity, Kimi CLI
+Skills Manager comes pre-configured with directory mappings for 37+ popular AI coding assistants. The script automatically detects which assistants are installed on your system and creates symlinks only for those available.
+
+**Verified Assistants** (tested and confirmed working):
+- Claude Code (`~/.claude/skills/`)
+- Codex (`~/.codex/skills/`)
+- Cursor (`~/.cursor/skills/`)
+- Gemini CLI (`~/.gemini/skills/`)
+- Kiro (`~/.kiro/skills/`)
+- Trae (`~/.trae/skills/`)
+- Windsurf (`~/.codeium/windsurf/skills/`)
+- OpenCode (`~/.config/opencode/skills/`)
+- Antigravity (`~/.gemini/antigravity/global_skills`)
+
+**Pre-configured Support** (mappings included, awaiting verification):
+- Cline, CodeBuddy, CommandCode, Continue, Crush, Droid, Goose, Junie, Kilo, Kode
+- MCPJam, Mux, OpenHands, Pi, Qoder, Qwen Code, Roo, Trae CN
+- Zencoder, OpenClaude, Neovate, Pochi, Amp, Kimi CLI
 - MoltBot, GitHub Copilot, and more...
+
+> **Note**: The actual number of assistants that will receive skills depends on which tools you have installed on your system. Run `add-skill.sh --dry-run` to see which assistants will be targeted.
 
 ## Installation
 
