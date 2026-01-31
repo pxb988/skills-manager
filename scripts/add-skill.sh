@@ -89,11 +89,11 @@ show_help() {
     echo "  $0 owner/repo --dry-run"
     echo "  $0 ./skill --force"
     echo ""
-    echo "Supported agents (37+): claude-code, codex, cursor, gemini-cli, kiro-cli,"
+    echo "Supported agents (35+): claude-code, codex, cursor, gemini-cli, kiro-cli,"
     echo "  trae, windsurf, cline, codebuddy, command-code, continue, crush, droid,"
     echo "  goose, junie, kilo, kode, mcpjam, mux, opencode, openhands, pi, qoder,"
     echo "  qwen-code, roo, trae-cn, zencoder, openclaude, neovate, pochi, amp,"
-    echo "  antigravity, kimi-cli, moltbot, github-copilot, and more..."
+    echo "  antigravity, kimi-cli, moltbot, github-copilot."
 }
 
 # 解析命令行参数

@@ -1,6 +1,6 @@
 # Skills Manager
 
-> A powerful skill management tool for sharing and managing skills across AI coding assistants.
+> A powerful skill management tool for sharing and managing skills across 35+ AI coding assistants.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Skills CLI](https://img.shields.io/badge/skills-cli-blue.svg)](https://www.npmjs.com/package/@anthropics/skills-cli)
@@ -19,7 +19,7 @@ Skills Manager is a comprehensive toolkit for managing skills for AI coding assi
 
 ## Supported AI Assistants
 
-Skills Manager comes pre-configured with directory mappings for 37+ popular AI coding assistants. The script automatically detects which assistants are installed on your system and creates symlinks only for those available.
+Skills Manager comes pre-configured with directory mappings for 35+ popular AI coding assistants. The script automatically detects which assistants are installed on your system and creates symlinks only for those available.
 
 **Verified Assistants** (tested and confirmed working):
 - Claude Code (`~/.claude/skills/`)

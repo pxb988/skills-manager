@@ -15,7 +15,7 @@ All notable changes to this project will be documented in this file.
   - `search-skills.ps1` - Search skills by keywords
   - `backup-skill.ps1` - Backup skills to ZIP archives
   - `update-description.ps1` - Update skill descriptions
-- **Multi-Agent Support**: Automatic symlink creation for 37+ AI coding assistants
+- **Multi-Agent Support**: Automatic symlink creation for 35+ AI coding assistants
 - **Flexible Installation**:
   - Support for local paths, GitHub repositories (owner/repo), and Git URLs
   - Target specific agent with `--agent` flag

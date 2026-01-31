@@ -1,9 +1,8 @@
 # Skills Manager
 
-> 一个强大的技能管理工具，支持 AI 编码助手的跨平台技能共享与管理
+> 一个强大的技能管理工具，支持 35+ AI 编码助手的跨平台技能共享与管理
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills CLI](https://img.shields.io/badge/skills-cli-blue.svg)](https://www.npmjs.com/package/@anthropics/skills-cli)
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
@@ -17,26 +16,15 @@ Skills Manager 是一个用于管理 AI 编码助手技能的综合工具集。�
 - **双模交互**：支持自然语言交互（通过 Claude Code）和命令行脚本调用
 - **灵活配置**：支持本地路径、GitHub 仓库、Git URL，以及私有仓库访问
 
-## 支持的 AI 助手
+## 支持的 AI 助手 (35+)
 
-Skills Manager 预配置了 37+ 流行 AI 编码助手的目录映射。脚本会自动检测你的系统中安装了哪些助手，只为可用的助手创建符号链接。
-
-**已验证的助手**（经过测试确认可用）：
-- Claude Code (`~/.claude/skills/`)
-- Codex (`~/.codex/skills/`)
-- Gemini CLI (`~/.gemini/skills/`)
-- Kiro (`~/.kiro/skills/`)
-- Trae (`~/.trae/skills/`)
-- OpenCode (`~/.config/opencode/skills/`)
-- Antigravity (`~/.gemini/antigravity/global_skills`)
-
-**预配置支持**（已包含映射，待验证）：
-- Cursor (`~/.cursor/skills/`)
-- Windsurf (`~/.codeium/windsurf/skills/`)
-- Cline, CodeBuddy, CommandCode, Continue, Crush, Droid, Goose, Junie, Kilo, Kode
-- MCPJam, Mux, OpenHands, Pi, Qoder, Qwen Code, Roo, Trae CN
-- Zencoder, OpenClaude, Neovate, Pochi, Amp, Kimi CLI
-- MoltBot, GitHub Copilot, and more...
+- Claude Code, Codex, Cursor, Gemini CLI, Kiro, Trae
+- Windsurf, Cline, CodeBuddy, CommandCode, Continue
+- Crush, Droid, Goose, Junie, Kilo, Kode
+- MCPJam, Mux, OpenCode, OpenHands, Pi, Qoder
+- Qwen Code, Roo, Trae CN, Zencoder, OpenClaude
+- Neovate, Pochi, Amp, Antigravity, Kimi CLI
+- MoltBot, GitHub Copilot
 
 > **注意**：实际能接收到技能的助手数量取决于你的系统安装了哪些工具。运行 `add-skill.sh --dry-run` 可以查看哪些助手会被作为目标。
 

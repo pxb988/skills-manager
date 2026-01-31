@@ -275,7 +275,7 @@ custom_instructions: |
 
   ### 支持的 AI 助手
 
-  自动检测并支持以下 37+ AI 编码助手：
+  自动检测并支持以下 35+ AI 编码助手：
   - Claude Code (`~/.claude/skills/`)
   - Codex (`~/.codex/skills/`)
   - Cursor (`~/.cursor/skills/`)
@@ -283,7 +283,7 @@ custom_instructions: |
   - Kiro (`~/.kiro/skills/`)
   - Trae (`~/.trae/skills/`)
   - Windsurf (`~/.codeium/windsurf/skills/`)
-  - 以及 30+ 其他工具...
+  - 以及 20+ 其他工具...
 
   ### .skill-lock.json 格式
 
