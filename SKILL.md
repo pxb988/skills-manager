@@ -250,13 +250,13 @@ custom_instructions: |
   - "从 ./my-skill 添加技能"
   - "从 GitHub 添加 owner/repo"
   - "列出所有已安装的 skills"
-  - "查看 xyz-dl skill 的详细信息"
+  - "查看 my-awesome-skill skill 的详细信息"
   - "创建一个名为 my-new-skill 的 skill"
   - "删除旧的 test-skill"
   - "备份所有 skills 到备份目录"
   - "搜索包含 'pdf' 关键字的 skills"
   - "编辑 skill-seekers 的描述"
-  - **"描述 xyz-dl 这个 skill 是做什么的"**
+  - **"描述 my-awesome-skill 这个 skill 是做什么的"**
   - **"给我介绍一下 skill-seekers 的功能"**
   - **"分析这个 skill 的用途和使用场景"**
   - **"为 my-skill 生成一个新的描述"**
@@ -346,7 +346,7 @@ custom_instructions: |
 
   ### 描述输出
   ```
-  # Skill 名称: xyz-dl
+  # Skill 名称: my-awesome-skill
 
   ## 功能说明
   [简洁描述这个 skill 做什么]
@@ -392,4 +392,4 @@ metadata:
 - "添加 skill-name 到 .agents 系统"
 - "列出所有 skills"
 - "创建一个新的 skill"
-- "描述 xyz-dl 这个 skill"
+- "描述 my-awesome-skill 这个 skill"

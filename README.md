@@ -1,21 +1,23 @@
 # Skills Manager
 
-> 一个强大的技能管理工具，支持 37+ AI 编码助手的跨平台技能共享与管理
+> A powerful skill management tool for sharing and managing skills across 37+ AI coding assistants.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Skills CLI](https://img.shields.io/badge/skills-cli-blue.svg)](https://www.npmjs.com/package/@anthropics/skills-cli)
 
-## 简介
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
-Skills Manager 是一个用于管理 AI 编码助手技能的综合工具集。它不仅允许你将技能分发到所有支持的 AI 助手，还提供了完整的本地技能生命周期管理功能，包括创建、搜索、备份、列出和描述技能。
+## Introduction
 
-**核心价值：**
-- **一次安装，到处使用**：将技能添加到 `.agents` 系统，自动映射到所有支持的 AI 助手
-- **全生命周期管理**：提供创建、搜索、备份、删除等一站式管理工具
-- **双模交互**：支持自然语言交互（通过 Claude Code）和命令行脚本调用
-- **灵活配置**：支持本地路径、GitHub 仓库、Git URL，以及私有仓库访问
+Skills Manager is a comprehensive toolkit for managing skills for AI coding assistants. It not only allows you to distribute skills to all supported AI assistants but also provides full local skill lifecycle management, including creating, searching, backing up, listing, and describing skills.
 
-## 支持的 AI 助手 (37+)
+**Core Value:**
+- **Install Once, Use Everywhere**: Add skills to the `.agents` system, automatically mapping them to all supported AI assistants.
+- **Full Lifecycle Management**: Provides one-stop management tools for creating, searching, backing up, and deleting skills.
+- **Dual Interaction Modes**: Supports natural language interaction (via Claude Code) and command-line script execution.
+- **Flexible Configuration**: Supports local paths, GitHub repositories, Git URLs, and private repository access.
+
+## Supported AI Assistants (37+)
 
 - Claude Code, Codex, Cursor, Gemini CLI, Kiro, Trae
 - Windsurf, Cline, CodeBuddy, CommandCode, Continue
@@ -25,143 +27,143 @@ Skills Manager 是一个用于管理 AI 编码助手技能的综合工具集。�
 - Neovate, Pochi, Amp, Antigravity, Kimi CLI
 - MoltBot, GitHub Copilot, and more...
 
-## 安装
+## Installation
 
-### 方式一：作为 Claude Code Skill 安装（推荐）
+### Method 1: Install as a Claude Code Skill (Recommended)
 
-首先确保已安装此 skill 到 Claude Code，这样你就可以直接用自然语言管理技能：
+First, ensure you have installed this skill into Claude Code so you can manage skills using natural language:
 
 ```bash
-# 方法一：直接从 GitHub 安装
+# Method 1: Install directly from GitHub
 npx skills add pxb988/skills-manager
 
-# 方法二：从本地安装
+# Method 2: Install from local path
 npx skills add F:\Github\skills-manager
 ```
 
-### 方式二：作为本地工具集使用
+### Method 2: Use as a Local Toolkit
 
-如果你更喜欢在终端直接运行脚本，可以将仓库克隆到本地：
+If you prefer to run scripts directly in the terminal, you can clone the repository locally:
 
 ```bash
-# 下载脚本
+# Clone the repository
 git clone https://github.com/your-username/skills-manager.git
 cd skills-manager
 
-# 建议将 scripts 目录添加到你的 PATH 环境变量中
+# It is recommended to add the scripts directory to your PATH environment variable
 ```
 
-## 使用方式：自然语言交互（推荐）
+## Usage: Natural Language Interaction (Recommended)
 
-安装后，**Skills Manager 作为一个 Skill**，让你能通过自然语言与 Claude Code 对话来管理所有技能。
+Once installed, **Skills Manager works as a Skill**, allowing you to manage all skills by conversing with Claude Code in natural language.
 
-#### 基本管理
-- **添加技能**："添加 xyz-dl 这个技能" 或 "从 GitHub 添加 owner/repo"
-- **列出技能**："列出所有已安装的技能"
-- **搜索技能**："搜索跟 PDF 相关的技能"
-- **描述技能**："描述一下 xyz-dl 这个技能是做什么的" 或 "给我介绍一下 skill-seekers 的功能"
+#### Basic Management
+- **Add Skill**: "Add my-awesome-skill" or "Add owner/repo from GitHub"
+- **List Skills**: "List all installed skills"
+- **Search Skills**: "Search for skills related to PDF"
+- **Describe Skill**: "Describe what my-awesome-skill does" or "Introduce the features of skill-seekers"
 
-#### 维护操作
-- **创建技能**："创建一个名为 my-new-skill 的新技能模板"
-- **备份技能**："备份所有技能" 或 "备份 xyz-dl 技能"
-- **删除技能**："删除旧的 test-skill"
-- **编辑技能**："编辑 skill-seekers 的描述"
+#### Maintenance Operations
+- **Create Skill**: "Create a new skill template named my-new-skill"
+- **Backup Skills**: "Backup all skills" or "Backup my-awesome-skill"
+- **Delete Skill**: "Delete the old test-skill"
+- **Edit Skill**: "Edit the description of skill-seekers"
 
-## 使用方式：命令行脚本
+## Usage: Command Line Scripts
 
-除了自然语言，你也直接运行 `scripts/` 目录下的脚本。
+In addition to natural language, you can also directly run scripts located in the `scripts/` directory.
 
-### 1. 安装/添加技能 (`add-skill.sh`)
+### 1. Install/Add Skill (`add-skill.sh`)
 
-核心脚本，用于将技能安装到 `.agents` 系统并分发。
+The core script for installing skills into the `.agents` system and distributing them.
 
 ```bash
-# 自动识别 GitHub 仓库、Git URL 或本地路径
+# Automatically identifies GitHub repository, Git URL, or local path
 add-skill.sh [OPTIONS] <source>
 ```
 
-**示例：**
+**Examples:**
 ```bash
-add-skill.sh anthropics/skills                  # GitHub 仓库
-add-skill.sh ./my-custom-skill                  # 本地路径
-add-skill.sh owner/repo --agent claude-code     # 仅安装到 Claude Code
-add-skill.sh owner/repo --dry-run               # 预览模式
-add-skill.sh private/repo --github-token <tok>  # 私有仓库
+add-skill.sh anthropics/skills                  # GitHub repository
+add-skill.sh ./my-custom-skill                  # Local path
+add-skill.sh owner/repo --agent claude-code     # Install only to Claude Code
+add-skill.sh owner/repo --dry-run               # Preview mode
+add-skill.sh private/repo --github-token <tok>  # Private repository
 ```
 
-### 2. 技能管理工具 (PowerShell)
+### 2. Skill Management Tools (PowerShell)
 
-提供了丰富的 PowerShell 脚本用于日常维护。
+Provides a rich set of PowerShell scripts for daily maintenance.
 
-#### 列出技能 (`list-skills.ps1`)
-列出主技能目录和市场技能目录下的所有技能及其简介。
+#### List Skills (`list-skills.ps1`)
+Lists all skills and their brief descriptions in the main skill directory and marketplace skill directory.
 ```powershell
 .\scripts\list-skills.ps1
 ```
 
-#### 搜索技能 (`search-skills.ps1`)
-在技能名称、描述和内容中搜索关键词。
+#### Search Skills (`search-skills.ps1`)
+Searches for keywords in skill names, descriptions, and content.
 ```powershell
 .\scripts\search-skills.ps1 -Keyword "pdf"
 ```
 
-#### 创建新技能 (`create-skill.ps1`)
-快速生成包含标准 `SKILL.md` 的技能模版。
+#### Create New Skill (`create-skill.ps1`)
+Quickly generates a skill template containing a standard `SKILL.md`.
 ```powershell
-.\scripts\create-skill.ps1 -Name "my-new-skill" -Description "这是一个测试技能" -Tags "test","demo"
+.\scripts\create-skill.ps1 -Name "my-new-skill" -Description "This is a test skill" -Tags "test","demo"
 ```
 
-#### 备份技能 (`backup-skill.ps1`)
-将技能打包为 ZIP 文件。如果不指定名称，则备份所有技能。
+#### Backup Skills (`backup-skill.ps1`)
+Packages skills into a ZIP file. If no name is specified, all skills are backed up.
 ```powershell
-# 备份所有技能
+# Backup all skills
 .\scripts\backup-skill.ps1
 
-# 备份特定技能
-.\scripts\backup-skill.ps1 -Name "xyz-dl"
+# Backup a specific skill
+.\scripts\backup-skill.ps1 -Name "my-awesome-skill"
 ```
 
-#### 描述技能 (`describe-skill.ps1`)
-读取并展示技能的 `SKILL.md` 内容，帮助了解技能详情。
+#### Describe Skill (`describe-skill.ps1`)
+Reads and displays the content of `SKILL.md` to help understand skill details.
 ```powershell
 .\scripts\describe-skill.ps1 -Name "skills-manager"
 ```
 
-#### 删除技能 (`delete-skill.ps1`)
-安全删除技能及其关联的符号链接（需小心使用）。
+#### Delete Skill (`delete-skill.ps1`)
+Safely deletes a skill and its associated symbolic links (use with caution).
 ```powershell
 .\scripts\delete-skill.ps1 -Name "unused-skill"
 ```
 
-## 工作原理
+## How It Works
 
-Skills Manager 采用中心化存储策略：
+Skills Manager uses a centralized storage strategy:
 
-1. **统一存储**：所有技能被安装到 `~/.agents/skills/<skill-name>/`。
-2. **状态锁定**：`.skill-lock.json` 记录了每个技能的来源、版本和安装时间。
-3. **智能分发**：脚本自动扫描系统中的 AI 助手目录（如 `~/.claude/skills`, `~/.cursor/skills` 等），并创建指向中心存储的符号链接。
+1.  **Unified Storage**: All skills are installed to `~/.agents/skills/<skill-name>/`.
+2.  **State Locking**: `.skill-lock.json` records the source, version, and installation time of each skill.
+3.  **Smart Distribution**: The script automatically scans AI assistant directories in the system (such as `~/.claude/skills`, `~/.cursor/skills`, etc.) and creates symbolic links pointing to the centralized storage.
 
-这种设计确保了当你更新一个技能时，所有 AI 助手都能立即使用最新版本，且不会破坏各个助手原本的配置。
+This design ensures that when you update a skill, all AI assistants can immediately use the latest version without disrupting the configuration of each assistant.
 
-## 目录结构
+## Directory Structure
 
 ```
 ~/.agents/
 ├── skills/
-│   ├── skill-1/          # 实际技能存储位置
+│   ├── skill-1/          # Actual skill storage location
 │   └── ...
-└── .skill-lock.json      # 技能元数据记录
+└── .skill-lock.json      # Skill metadata record
 ```
 
-## 许可证
+## License
 
-MIT License - 详见 [LICENSE](LICENSE) 文件
+MIT License - See [LICENSE](LICENSE) file for details.
 
-## 贡献
+## Contribution
 
-欢迎提交 Issue 和 Pull Request！我们尤其欢迎对更多 AI 助手的支持和新功能的建议。
+Issues and Pull Requests are welcome! We especially welcome support for more AI assistants and suggestions for new features.
 
-## 致谢
+## Acknowledgements
 
-- 灵感来自 [Skill Seekers](https://github.com/yusufkaraaslan/Skill_Seekers)
-- 基于 [Anthropic Skills CLI](https://github.com/anthropics/skills) 规范
+- Inspired by [Skill Seekers](https://github.com/yusufkaraaslan/Skill_Seekers)
+- Based on [Anthropic Skills CLI](https://github.com/anthropics/skills) specification
