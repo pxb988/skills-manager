@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2026-02-14
+
+### Added
+- `add-skill.ps1` - PowerShell native version of add-skill for Windows users
+- `create-skill.sh` - Bash version of create-skill for cross-platform support
+
+### Changed
+- **Centralized Architecture**: All scripts now follow the `.agents/skills/` central repository pattern
+  - `create-skill.ps1` - Creates skills in `~/.agents/skills/` first, then maps via Junction
+  - `delete-skill.ps1` - Three-step cleanup: remove Junctions → delete source → update lock file
+  - `list-skills.ps1` - Scans central repository, marks Junctions with `[链接]` tag
+  - `search-skills.ps1` - Searches central repository first with deduplication
+  - `backup-skill.ps1` - New `-Source` parameter (agents/claude/all), defaults to agents
+  - `describe-skill.ps1` - Prioritizes `.agents/skills/` when searching
+  - `update-description.ps1` - Prioritizes `.agents/skills/` when searching
+- **Windows Junction Support**: `add-skill.sh` now detects Windows (MINGW/MSYS/CYGWIN) and uses `New-Item -ItemType Junction` instead of `ln -sf`
+- **SKILL.md** - Strengthened centralized storage principles and added Windows notes
+- All scripts now search three-tier directory system: `.agents/skills/` > `.claude/skills/` > marketplace
+
+### Fixed
+- `add-skill.sh` symlink creation failing on Windows due to `ln -sf` requiring admin privileges
+
 ## [1.0.0] - 2026-01-31
 
 ### Added
@@ -31,4 +53,5 @@ All notable changes to this project will be documented in this file.
 ### Supported AI Assistants
 Claude Code, Codex, Cursor, Gemini CLI, Kiro, Trae, Windsurf, Cline, CodeBuddy, CommandCode, Continue, Crush, Droid, Goose, Junie, Kilo, Kode, MCPJam, Mux, OpenCode, OpenHands, Pi, Qoder, Qwen Code, Roo, Trae CN, Zencoder, OpenClaude, Neovate, Pochi, Amp, Antigravity, Kimi CLI, MoltBot, GitHub Copilot, and more...
 
+[1.1.0]: https://github.com/pxb988/skills-manager/releases/tag/v1.1.0
 [1.0.0]: https://github.com/pxb988/skills-manager/releases/tag/v1.0.0

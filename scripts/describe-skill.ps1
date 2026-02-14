@@ -5,13 +5,16 @@ param(
     [string]$SkillName
 )
 
+$agentsSkillsDir = "$env:USERPROFILE\.agents\skills"
 $skillsDir = "$env:USERPROFILE\.claude\skills"
 $marketSkillsDir = "$env:USERPROFILE\.claude\plugins\marketplaces\anthropic-agent-skills\skills"
 
-# 查找 skill
+# 查找 skill（优先中心仓库）
 $skillPath = $null
 
-if (Test-Path (Join-Path $skillsDir $SkillName)) {
+if (Test-Path (Join-Path $agentsSkillsDir $SkillName)) {
+    $skillPath = Join-Path $agentsSkillsDir $SkillName
+} elseif (Test-Path (Join-Path $skillsDir $SkillName)) {
     $skillPath = Join-Path $skillsDir $SkillName
 } elseif (Test-Path (Join-Path $marketSkillsDir $SkillName)) {
     $skillPath = Join-Path $marketSkillsDir $SkillName
@@ -39,7 +42,8 @@ $license = if ($content -match 'license:\s*(.+?)\n') { $matches[1].Trim() } else
 
 Write-Host "名称: $name" -ForegroundColor Yellow
 Write-Host "描述: $description" -ForegroundColor White
-Write-Host "许可证: $license`n" -ForegroundColor Gray
+Write-Host "许可证: $license" -ForegroundColor Gray
+Write-Host "位置: $skillPath`n" -ForegroundColor Gray
 
 # 提取 tags
 if ($content -match 'tags:\s*\n((?:\s*-\s*.+\n)+)') {

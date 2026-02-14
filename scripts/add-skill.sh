@@ -10,6 +10,17 @@ AGENTS_DIR="$HOME/.agents"
 AGENTS_SKILLS_DIR="$AGENTS_DIR/skills"
 LOCK_FILE="$AGENTS_DIR/.skill-lock.json"
 
+# OS 检测
+detect_os() {
+    case "$(uname -s)" in
+        MINGW*|MSYS*|CYGWIN*) echo "windows" ;;
+        Darwin*)               echo "macos" ;;
+        *)                     echo "linux" ;;
+    esac
+}
+
+OS_TYPE=$(detect_os)
+
 # 命令行参数
 DRY_RUN=false
 FORCE=false
@@ -153,6 +164,37 @@ log_warn() {
 
 log_error() {
     echo -e "${RED}[ERROR]${NC} $1"
+}
+
+# 创建跨平台链接（符号链接或 Junction）
+create_link() {
+    local source="$1"
+    local target="$2"
+
+    if [ "$OS_TYPE" = "windows" ]; then
+        local win_source=$(cygpath -w "$source" 2>/dev/null || echo "$source" | sed 's|/|\\|g')
+        local win_target=$(cygpath -w "$target" 2>/dev/null || echo "$target" | sed 's|/|\\|g')
+        powershell.exe -NoProfile -Command "
+            if (Test-Path '$win_target') { Remove-Item '$win_target' -Force -Recurse }
+            New-Item -ItemType Junction -Path '$win_target' -Target '$win_source' | Out-Null
+        " 2>/dev/null
+    else
+        ln -sf "$source" "$target" 2>/dev/null
+    fi
+}
+
+# 删除链接（跨平台）
+remove_link() {
+    local target="$1"
+
+    if [ "$OS_TYPE" = "windows" ]; then
+        local win_target=$(cygpath -w "$target" 2>/dev/null || echo "$target" | sed 's|/|\\|g')
+        powershell.exe -NoProfile -Command "
+            if (Test-Path '$win_target') { Remove-Item '$win_target' -Force -Recurse }
+        " 2>/dev/null
+    else
+        rm -f "$target" 2>/dev/null
+    fi
 }
 
 # 解析源类型
@@ -423,12 +465,12 @@ create_symlinks() {
         local skill_source="$AGENTS_SKILLS_DIR/$skill_name"
 
         # 删除旧链接（如果存在）
-        if [ -L "$link_target" ]; then
-            rm "$link_target"
+        if [ -L "$link_target" ] || [ -d "$link_target" ]; then
+            remove_link "$link_target"
         fi
 
         # 创建符号链接
-        ln -sf "$skill_source" "$link_target" 2>/dev/null && {
+        create_link "$skill_source" "$link_target" && {
             log_success "  ✓ Linked to $display_path/"
             ((created++))
         } || {
